@@ -40,3 +40,14 @@ d2 = a*b + c
 print('d1', d1)
 print('d2', d2)
 print('slope', (d2 - d1)/h)
+
+class Value:
+  def __init__(self, data):
+    self.data = data
+
+  def __repr__(self):
+    return f"Value(data={self.data})"
+
+a = Value(3.0)
+b = Value(-4.0)
+print(a,b)
