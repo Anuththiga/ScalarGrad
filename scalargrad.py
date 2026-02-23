@@ -69,5 +69,19 @@ d1 = a*b + c
 # d1._prev
 # d1._op
 
-print(d1)
+from graphviz import Digraph
 
+def trace(root):
+  nodes, edges = set(), set()
+
+  def build(v):
+    if v not in nodes:
+      nodes.add(v)
+      for child in v._prev:
+        edges.add(child, v)
+        build(child)
+  build(root)
+  return nodes, edges
+
+def draw_dot(root):
+  dot = Digraph(format='svg', graph_attr={'randir', 'LR'})
